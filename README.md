@@ -20,7 +20,7 @@ You can use the `ghcr.io/marcaureln/volta` image as a base image for your own Do
 
 The images are labeled as follows:
 
-- `ghcr.io/marcaureln/volta:2.0.0-nobel` - Volta version 2.0.0 on Ubuntu 24.04.
+- `ghcr.io/marcaureln/volta:2.0.0-noble` - Volta version 2.0.0 on Ubuntu 24.04.
 - `ghcr.io/marcaureln/volta:2.0.0-bookworm` - Volta version 2.0.0 on Debian 12.
 
 Thoses tags are based on [buildpack-deps images](https://hub.docker.com/_/buildpack-deps/) from the official Docker library.
