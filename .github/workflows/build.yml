@@ -33,13 +33,21 @@ jobs:
         images: ghcr.io/${{github.actor}}/volta
         tags: |
             type=raw,value=${{ matrix.version }}-${{ matrix.os }}
-        
+    
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+    
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v3
+
     - name: Build image and push
       uses: docker/build-push-action@v6
       with:
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
+        push: true
+        platforms: linux/amd64,linux/arm64
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        build-args: |
             VOLTA_VERSION=${{ matrix.version }}
             BUILDPACK=${{ matrix.os }}
