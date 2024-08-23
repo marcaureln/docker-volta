@@ -1,5 +1,8 @@
 # Volta Docker
 
+[![Build images](https://github.com/marcaureln/docker-volta/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/marcaureln/docker-volta/actions/workflows/build.yml)
+[![Update Volta version](https://github.com/marcaureln/docker-volta/actions/workflows/update.yml/badge.svg?branch=main)](https://github.com/marcaureln/docker-volta/actions/workflows/update.yml)
+
 This repository contains Docker images for the [Volta](https://volta.sh) JavaScript tool manager.
 
 ## What is Volta?
