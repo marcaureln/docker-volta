@@ -20,7 +20,7 @@ The tags are based off of [buildpack-deps images](https://hub.docker.com/_/build
 
 ### Why is there no Alpine variant?
 
-See [https://github.com/volta-cli/volta/issues/473] for more information.
+See <https://github.com/volta-cli/volta/issues/473> for more information.
 
 ## Acknowledgements
 
