@@ -9,3 +9,10 @@ curl -fsSL \
   tr -d '"' | \
   sed 's/^v//' \
   > latest.txt
+
+if [ $? -eq 0 ]; then
+  exit 0
+else
+  echo "Failed to fetch the latest release tag." >&2
+  exit 1
+fi
