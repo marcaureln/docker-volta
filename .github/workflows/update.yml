@@ -1,0 +1,27 @@
+name: Update Volta version
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run update.sh script
+        run: ./update.sh
+
+      - name: Commit files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git add . && git diff --quiet && git diff --cached --quiet; then
+            echo "No changes detected"
+            exit 0
+          fi
+          git commit -m "Update Volta to latest version"
+          git push
