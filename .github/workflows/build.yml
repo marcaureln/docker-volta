@@ -35,7 +35,7 @@ jobs:
         id: versions
         run: |
           json_array=$(cat releases.txt | awk '{printf "\"%s\", ", $0}' | sed 's/, $//')
-          echo "versions=\"[$json_array]\"" >> "$GITHUB_OUTPUT"
+          echo "versions=[$json_array]" >> "$GITHUB_OUTPUT"
 
   build:
     runs-on: ubuntu-latest
