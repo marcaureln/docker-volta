@@ -72,7 +72,8 @@ jobs:
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/volta
           tags: |
-            type=raw,value=latest,enable=${{ matrix.os == env.DEBIAN_LATEST }}
+            type=raw,value=latest,enable=${{ matrix.version == env.VOLTA_LATEST && matrix.os == env.DEBIAN_LATEST }}
+            type=raw,value=latest-${{ matrix.os }},enable=${{ matrix.version == env.VOLTA_LATEST }}
             type=raw,value=${{ matrix.version }},enable=${{ matrix.os == env.DEBIAN_LATEST }}
             type=raw,value=${{ matrix.version }}-${{ matrix.os }}
 
@@ -93,7 +94,8 @@ jobs:
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/volta
           tags: |
-            type=raw,value=slim,enable=${{ matrix.os == env.DEBIAN_LATEST }}
+            type=raw,value=latest-slim,enable=${{ matrix.version == env.VOLTA_LATEST && matrix.os == env.DEBIAN_LATEST }}
+            type=raw,value=latest-${{ matrix.os }}-slim,enable=${{ matrix.version == env.VOLTA_LATEST }}
             type=raw,value=${{ matrix.version }}-slim,enable=${{ matrix.os == env.DEBIAN_LATEST }}
             type=raw,value=${{ matrix.version }}-${{ matrix.os }}-slim
 

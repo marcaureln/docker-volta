@@ -5,6 +5,15 @@
 
 This repository contains Docker images for the [Volta](https://volta.sh) JavaScript tool manager.
 
+## Supported tags and respective `Dockerfile` links
+
+- [`latest`, `latest-bookworm`, `latest-bullseye`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile)
+- [`2.0.1`, `2.0.1-bookworm`, `2.0.1-bullseye`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile)
+- [`2.0.0`, `2.0.0-bookworm`, `2.0.0-bullseye`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile)
+- [`latest-slim`, `latest-bookworm-slim`, `latest-bullseye-slim`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile.slim)
+- [`2.0.1-slim`, `2.0.1-bookworm-slim`, `2.0.1-bullseye-slim`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile.slim)
+- [`2.0.0-slim`, `2.0.0-bookworm-slim`, `2.0.0-bullseye-slim`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile.slim)
+
 ## What is Volta?
 
 To quote their website:
