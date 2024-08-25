@@ -12,9 +12,10 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        os: [bookworm, noble]
+        os: [bookworm, bullseye]
     env:
-      LATEST_OS: bookworm
+      DEBIAN_LATEST: bookworm
+      PLATFORMS: linux/amd64,linux/arm64
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,8 +37,8 @@ jobs:
         with:
           images: ghcr.io/${{github.actor}}/volta
           tags: |
-            type=raw,value=latest,enable=${{ matrix.os == env.LATEST_OS }}
-            type=raw,value=${{ steps.volta.outputs.VOLTA_VERSION }},enable=${{ matrix.os == env.LATEST_OS }}
+            type=raw,value=latest,enable=${{ matrix.os == env.DEBIAN_LATEST }}
+            type=raw,value=${{ steps.volta.outputs.VOLTA_VERSION }},enable=${{ matrix.os == env.DEBIAN_LATEST }}
             type=raw,value=${{ steps.volta.outputs.VOLTA_VERSION }}-${{ matrix.os }}
 
       - name: Set up QEMU
@@ -51,9 +52,9 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: ${{ env.PLATFORMS }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             VOLTA_VERSION=${{ steps.volta.outputs.VOLTA_VERSION }}
-            BUILDPACK=${{ matrix.os }}
+            DEBIAN_VERSION=${{ matrix.os }}

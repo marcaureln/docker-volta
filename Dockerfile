@@ -1,6 +1,6 @@
-ARG BUILDPACK
+ARG DEBIAN_VERSION
 
-FROM buildpack-deps:${BUILDPACK}-curl
+FROM buildpack-deps:${DEBIAN_VERSION}-curl
 
 # Set the shell to bash
 SHELL ["/bin/bash", "-c"]
