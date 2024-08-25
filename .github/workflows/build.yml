@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       volta_latest: ${{ steps.volta_latest.outputs.latest }}
-      volta_versions: ${{ github.event.inputs.build-all == true && steps.versions.outputs.versions || steps.volta_latest.outputs.versions }}
+      volta_versions: ${{ inputs.build-all == true && steps.versions.outputs.versions || steps.volta_latest.outputs.versions }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,7 +28,7 @@ jobs:
           echo "latest=$(head -n 1 latest.txt)" >> "$GITHUB_OUTPUT"
           echo "versions=[\"$(head -n 1 latest.txt)\"]" >> "$GITHUB_OUTPUT"
       - name: Get all versions
-        if: github.event.inputs.build-all == true
+        if: inputs.build-all == true
         id: versions
         run: |
           echo "versions=$(./releases.sh)" >> "$GITHUB_OUTPUT"
