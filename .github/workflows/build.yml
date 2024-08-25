@@ -18,6 +18,9 @@ jobs:
       volta_latest: ${{ steps.volta_latest.outputs.latest }}
       volta_versions: ${{ github.event.inputs.build-all == true && steps.versions.outputs.versions || steps.volta_latest.outputs.versions }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Get latest version
         id: volta_latest
         run: |
