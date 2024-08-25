@@ -28,14 +28,14 @@ jobs:
       - name: Get latest version
         id: volta_latest
         run: |
-          ./update.sh
           echo "latest=$(head -n 1 latest.txt)" >> "$GITHUB_OUTPUT"
           echo "versions=[\"$(head -n 1 latest.txt)\"]" >> "$GITHUB_OUTPUT"
       - name: Get all versions
         if: inputs.build-all == true
         id: versions
         run: |
-          echo "versions=$(./releases.sh)" >> "$GITHUB_OUTPUT"
+          json_array=$(cat releases.txt | awk '{printf "\"%s\", ", $0}' | sed 's/, $//')
+          echo "versions=\"[$json_array]\"" >> "$GITHUB_OUTPUT"
 
   build:
     runs-on: ubuntu-latest
