@@ -14,8 +14,10 @@ if [ $? -eq 0 ]; then
   # Replace the version in latest.txt
   echo "$latest_version" > latest.txt
 
-  # Append the latest version to the top of releases.txt
-  { echo "$latest_version"; cat releases.txt; } > temp.txt && mv temp.txt releases.txt
+  # Append the latest version to the top of releases.txt if it is different from the last version
+  if [ "$latest_version" != "$(head -n 1 releases.txt)" ]; then
+    { echo "$latest_version"; cat releases.txt; } > temp.txt && mv temp.txt releases.txt
+  fi
 
   echo "Successfully updated latest.txt and releases.txt."
   exit 0
