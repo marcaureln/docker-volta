@@ -5,14 +5,22 @@
 
 This repository contains Docker images for the [Volta](https://volta.sh) JavaScript tool manager.
 
-## Supported tags and respective `Dockerfile` links
+## Available tags and respective `Dockerfile` links
 
-- [`latest`, `latest-bookworm`, `latest-bullseye`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile)
-- [`2.0.1`, `2.0.1-bookworm`, `2.0.1-bullseye`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile)
-- [`2.0.0`, `2.0.0-bookworm`, `2.0.0-bullseye`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile)
-- [`latest-slim`, `latest-bookworm-slim`, `latest-bullseye-slim`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile.slim)
-- [`2.0.1-slim`, `2.0.1-bookworm-slim`, `2.0.1-bullseye-slim`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile.slim)
-- [`2.0.0-slim`, `2.0.0-bookworm-slim`, `2.0.0-bullseye-slim`](https://github.com/marcaureln/docker-volta/blob/main/Dockerfile.slim)
+- [`latest`, `latest-bookworm`, `2.0.1`, `2.0.1-bookworm`](./Dockerfile)
+- [`latest-bullseye`, `2.0.1-bullseye`](./Dockerfile)
+- [`latest-slim`, `latest-bookworm-slim`, `2.0.1-slim`, `2.0.1-bookworm-slim`](./Dockerfile.slim)
+- [`latest-bullseye-slim`, `2.0.1-bullseye-slim`](./Dockerfile.slim)
+
+This list won't be updated as frequently as the tags. Check this [page](https://hub.docker.com/r/marcaureln/volta/tags) for all available tags.
+
+## Supported architectures
+
+This image is built for `amd64` and `arm64`.
+
+## Supported Node.js versions
+
+All Node.js versions supported by Volta are supported by this image. Always make sure to pin a Node.js version in your `package.json` file. Learn more about pinning Node.js versions [here](https://docs.volta.sh/guide/understanding#managing-your-toolchain).
 
 ## What is Volta?
 
@@ -58,35 +66,29 @@ docker run --rm -it my-nodejs-app
 
 ## Image Variants
 
-The `marcaureln/volta` images come in several flavors. `<version>` refers to the Volta version you want to use. The `latest` tag is always the latest version of Volta with the latest stable Debian version.
+The `marcaureln/volta` images come in several flavors. The `latest` tag is always the latest version of Volta with the latest stable Debian version.
 
 ### `marcaureln/volta:<version>`
 
-The tags are based off of [Debian's buildpack-deps images](https://hub.docker.com/_/buildpack-deps/). The following tags are available: `<version>-bookworm`, `<version>-bullseye`.
+The `<version>` refers to the Volta version you want to use. Version >= `2.0.0` are supported. When using this tag, the image will be based off of the latest stable Debian version.
 
-### `marcaureln/volta:<version>-slim`
+### `marcaureln/volta:<version>-<flavor>`
 
-The slim variant is based off of [Debian's slim images](https://hub.docker.com/_/debian/). The following tags are available: `<version>-bookworm-slim`, `<version>-bullseye-slim`.
+The `<flavor>` refers to the Debian version you want to use. The tags are based off of [Debian's buildpack-deps images](https://hub.docker.com/_/buildpack-deps/). The following flavors are available: `bookworm`, `bullseye`. Thereby, the following tags are available: `<version>-bookworm`, `<version>-bullseye`.
+
+### `marcaureln/volta:<version>-<flavor>-slim`
+
+The slim variant is based off of [Debian's slim images](https://hub.docker.com/_/debian/). The same flavors are available: `bookworm`, `bullseye`. Thereby, the following tags are available: `<version>-bookworm-slim`, `<version>-bullseye-slim`.
 
 ### Why is there no Alpine variant?
 
-See <https://github.com/volta-cli/volta/issues/473> for more information.
-
-## Supported Volta versions
-
-We currently support Volta versions >= `2.0.0`.
-
-## Supported Node.js versions
-
-All Node.js versions supported by Volta are supported by this image. Always make sure to pin a Node.js version in your `package.json` file. Learn more about pinning Node.js versions [here](https://docs.volta.sh/guide/understanding#managing-your-toolchain).
-
-## Supported architectures
-
-This image is built for `amd64` and `arm64`.
+Volta does not support Alpine Linux yet. See <https://github.com/volta-cli/volta/issues/473> for more information.
 
 ## Acknowledgements
 
-This Docker image is inspired by [Michal Bryxí's article **Volta in Docker**](https://dev.to/michalbryxi/volta-in-docker-162a). Thanks Michal!
+This Docker image is inspired by [Michal Bryxí's article](https://dev.to/michalbryxi/volta-in-docker-162a).
+
+Special thanks to the [Volta](https://volta.sh) team for creating such a great tool.
 
 ## License
 
