@@ -87,3 +87,7 @@ This image is built for `amd64` and `arm64`.
 ## Acknowledgements
 
 This Docker image is inspired by [Michal Bryxí's article **Volta in Docker**](https://dev.to/michalbryxi/volta-in-docker-162a). Thanks Michal!
+
+## License
+
+This project is licensed under the [MIT license](./LICENSE).
