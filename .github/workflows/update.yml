@@ -2,8 +2,8 @@ name: Update Volta version
 
 on:
   schedule:
-    - cron: "0 0 * * *"
-  workflow_dispatch:
+    - cron: "30 5 1,15 * *"
+  workflow_dispatch: 
 
 jobs:
   update:
